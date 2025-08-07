@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Live Price</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="price">Loading...</div>
+
+    <script>
+      fetch("https://script.google.com/macros/s/AKfycbzcTmS9TIcjTk2LHK_tIQ0R0UNnvsQfs1MuLvHgpJu183F0e5r0FKHbrvOSyQ8IGR-O9A/exec")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("price").innerText = '£' + data;
+        })
+        .catch(() => {
+          document.getElementById("price").innerText = "Unavailable";
+        });
+    </script>
+  </body>
+</html>
